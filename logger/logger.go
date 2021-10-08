@@ -20,11 +20,9 @@ type Config struct {
 	MessageKey string `envconfig:"default=message"`
 	LevelKey   string `envconfig:"default=severity"`
 	TimeKey    string `envconfig:"default=timestamp"`
-	LogIndex   string
 	AppName    string
 	Host       string
 	SourceHost string
-	DockerID   string
 	Version    string `envconfig:"default=0.0.0"`
 	DevMode    bool   `envconfig:"default=false"`
 }
@@ -40,11 +38,9 @@ var (
 		MessageKey: "message",
 		LevelKey:   "severity",
 		TimeKey:    "timestamp",
-		LogIndex:   "GOLANG_JSON",
 		AppName:    "app",
 		Host:       "localhost",
 		SourceHost: "localhost",
-		DockerID:   "0",
 		Version:    "0.0.0",
 		DevMode:    false,
 	}
@@ -155,15 +151,6 @@ func getZapFields(config *Config) []zapcore.Field {
 
 	if config.SourceHost != "" {
 		fields = append(fields, zap.String("source_host", config.SourceHost))
-	}
-
-	if config.LogIndex != "" {
-		fields = append(fields, zap.String("index", config.LogIndex))
-		fields = append(fields, zap.String("programname", config.LogIndex))
-	}
-
-	if config.DockerID != "" {
-		fields = append(fields, zap.String("docker_id", config.DockerID))
 	}
 
 	return fields
