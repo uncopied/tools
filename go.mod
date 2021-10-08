@@ -2,7 +2,10 @@ module github.com/uncopied/tools
 
 go 1.16
 
+replace (
+	github.com/uncopied/tools/logger v1.0.0 => ./logger
+)
+
 require (
-	github.com/vrischmann/envconfig v1.3.0
-	go.uber.org/zap v1.19.1
+	github.com/uncopied/tools/logger v1.0.0
 )
