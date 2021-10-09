@@ -20,9 +20,8 @@ type Config struct {
 	MessageKey string `envconfig:"default=message"`
 	LevelKey   string `envconfig:"default=severity"`
 	TimeKey    string `envconfig:"default=timestamp"`
-	AppName    string
-	Host       string
-	SourceHost string
+	AppName    string `envconfig:"default=app"`
+	Host       string `envconfig:"default=localhost"`
 	Version    string `envconfig:"default=0.0.0"`
 	DevMode    bool   `envconfig:"default=false"`
 }
@@ -40,7 +39,6 @@ var (
 		TimeKey:    "timestamp",
 		AppName:    "app",
 		Host:       "localhost",
-		SourceHost: "localhost",
 		Version:    "0.0.0",
 		DevMode:    false,
 	}
@@ -147,10 +145,6 @@ func getZapFields(config *Config) []zapcore.Field {
 
 	if config.Host != "" {
 		fields = append(fields, zap.String("host", config.Host))
-	}
-
-	if config.SourceHost != "" {
-		fields = append(fields, zap.String("source_host", config.SourceHost))
 	}
 
 	return fields
