@@ -18,7 +18,7 @@ const tagsName = "hashtags"
 type Config struct {
 	LogLevel   string `envconfig:"default=info"`
 	MessageKey string `envconfig:"default=message"`
-	LevelKey   string `envconfig:"default=severity"`
+	LevelKey   string `envconfig:"default=level"`
 	TimeKey    string `envconfig:"default=timestamp"`
 	AppName    string `envconfig:"default=app"`
 	Host       string `envconfig:"default=localhost"`
@@ -35,7 +35,7 @@ var (
 	defaultCfg = Config{
 		LogLevel:   "info",
 		MessageKey: "message",
-		LevelKey:   "severity",
+		LevelKey:   "level",
 		TimeKey:    "timestamp",
 		AppName:    "app",
 		Host:       "localhost",
