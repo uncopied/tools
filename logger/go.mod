@@ -1,4 +1,4 @@
-module github.com/uncopied/tools/logger
+module logger
 
 go 1.16
 
